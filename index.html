@@ -332,7 +332,7 @@
 
 
 <!-- Paper content 1 -->
-<section class="hero is-small">
+<section class="hero is-small mt-6">
   <div class="container is-max-desktop">
       <div id="results-carousel">
 
@@ -366,7 +366,7 @@
       <img src="static/image/MATH_Pass_k_comparison_v2.png" alt="fig">
       <img src="static/image/dynamics_entropy_actor.png" alt="fig">
     </div>
-    <p style="margin-top: -40px;"> <strong>Figure 2. Experimental results on breaking group-level symmetry using <code>Qwen2.5-Math-7B</code>.</strong> 
+    <p style="margin-top: -10px;"> <strong>Figure 2. Experimental results on breaking group-level symmetry using Qwen2.5-Math-7B.</strong> 
     In the first three pictures, we amplify (Positive-Dominant) or suppress (Negative-Dominant) the advantages of correct trajectories to compare their performance with that of GRPO and the base model.
     In the last picture, we monitor the entropy dynamics across the three groups during training. Notably, the Negative-Dominant group exhibits a monotonic increase in entropy except at the very beginning, while the other groups show the opposite behavior.
     </p>
@@ -379,7 +379,7 @@
       <img src="static/image/MATH_Pass_k_comparison2_v2.png" alt="fig">
       <img src="static/image/correct_cnt_training.png" alt="fig">
     </div>
-    <p style="margin-top: -40px;"> <strong>>Figure 3. Experimental results on breaking sample-level symmetry using <code>Qwen2.5-Math-7B</code>.</strong> 
+    <p style="margin-top: -10px;"> <strong>Figure 3. Experimental results on breaking sample-level symmetry using Qwen2.5-Math-7B.</strong> 
     In the first three pictures, we rescaling the advantages to shift the learning focus toward harder queries (Hard-Focused) or easier queries (Easy-Focused) to compare their performance with that of GRPO and the base model.
     In the last picture, we record The within-batch count of correct sampling responses on the training set. Easy-Focused exhibits the most rapid initial convergence during the early stages of training, whereas Hard-Focused maintains a sustained upward trajectory in the later phases, eventually achieving superior performance.
     </p>
@@ -464,7 +464,7 @@
        </div>
 
        <p style="font-weight: bold; margin-bottom: 10px;">
-  Table 1. Pass@$k$ results on MATH, AIME 2025 and AMC23 with <code>Qwen2.5-Math-7B</code>. Bold and underlined numbers denote the best and second-best results for each $k$.
+  Table 1. Pass@$k$ results on MATH, AIME 2025 and AMC23 with Qwen2.5-Math-7B.
   Our experiments cover GRPO variants (GRPO[<a href="https://arxiv.org/pdf/2402.03300" target="_blank">1</a>], DAPO[<a href="https://arxiv.org/abs/2503.14476" target="_blank">2</a>], Dr.GRPO[<a href="https://arxiv.org/abs/2503.20783" target="_blank">3</a>]) and state-of-the-art methods W-REINFORCE[<a href="https://arxiv.org/pdf/2506.01347" target="_blank">4</a>](addressing GRPO's insufficient exploration) and GRPO-LEAD[<a href="https://arxiv.org/abs/2504.09696" target="_blank">5</a>] (tackling its difficulty adaptation).
 </p>
 
@@ -865,11 +865,10 @@
       </table>
 
       <p style="font-weight: bold; margin-bottom: 10px; font-size: 1.05em;">
-        Table 2. Performance comparison on multi-modal benchmarks with <code>Qwen2.5-VL-3B-Instruct</code>. Bold and underlined numbers indicate the best and second-best results respectively.
+        Table 2. Performance comparison on multi-modal benchmarks with Qwen2.5-VL-3B-Instruct.
       </p>
 
-      <!-- 核心表格 -->
-      <table style="text-align: center; border-collapse: collapse; width: 100%; max-width: 600px; font-size: 0.9em; margin: 15px 0;">
+      <table style="text-align: center; border-collapse: collapse; width: 100%; max-width: 800px; font-size: 0.9em; margin: 15px auto;">
         <!-- 内嵌样式定义 -->
         <style>
           /* 单元格基础样式 */
@@ -877,6 +876,7 @@
             border: 1px solid #ddd;
             padding: 6px 8px;
             vertical-align: middle;
+            text-align: center !important; /* 强制所有单元格居中（覆盖局部left） */
           }
           /* 表头样式 */
           table th {
@@ -895,12 +895,17 @@
           .a-grae-row {
             background-color: #f0f8ff;
           }
-          /* 任务分组行（浅灰色背景） */
+          /* 任务分组行（浅灰色背景）- 改为居中 */
           .task-group {
             background-color: #f9f9f9; /* 对应 gray!5 */
             font-style: italic;
-            text-align: left;
             font-weight: 500;
+            text-align: center !important; /* 分组行也居中 */
+          }
+          /* Method列单独左对齐（保持可读性） */
+          .method-col {
+            text-align: left !important;
+            min-width: 150px; /* 加宽Method列，避免文字换行 */
           }
           /* 等宽字体优化 */
           code {
@@ -911,7 +916,7 @@
         <thead>
           <tr>
             <!-- 表头分组：ID Domain + OOD Domain -->
-            <th rowspan="2" style="min-width: 120px; text-align: left;">Method</th>
+            <th rowspan="2" class="method-col">Method</th>
             <th>ID Domain</th>
             <th colspan="2">OOD Domain</th>
           </tr>
@@ -928,43 +933,43 @@
             <td colspan="4">Task A: General Mathematical Reasoning</td>
           </tr>
           <tr>
-            <td style="text-align: left;">base model</td>
+            <td class="method-col">base model</td>
             <td>27.8</td>
             <td>20.8</td>
             <td>31.6</td>
           </tr>
           <tr>
-            <td style="text-align: left;">GRPO</td>
+            <td class="method-col">GRPO</td>
             <td>43.5</td>
             <td>23.4</td>
             <td>35.2</td>
           </tr>
           <tr class="a-grae-row">
-            <td style="text-align: left;">GRPO + A-GRAE</td>
+            <td class="method-col">GRPO + A-GRAE</td>
             <td class="second">45.7</td>
             <td>24.0</td>
             <td>36.8</td>
           </tr>
           <tr>
-            <td style="text-align: left;">DAPO</td>
+            <td class="method-col">DAPO</td>
             <td>44.7</td>
             <td>23.8</td>
             <td>35.9</td>
           </tr>
           <tr class="a-grae-row">
-            <td style="text-align: left;">DAPO + A-GRAE</td>
+            <td class="method-col">DAPO + A-GRAE</td>
             <td>45.9</td>
             <td class="second">24.3</td>
             <td class="second">37.5</td>
           </tr>
           <tr>
-            <td style="text-align: left;">Dr.GRPO</td>
+            <td class="method-col">Dr.GRPO</td>
             <td>44.9</td>
             <td>24.2</td>
             <td>36.5</td>
           </tr>
           <tr class="a-grae-row">
-            <td style="text-align: left;">Dr.GRPO + A-GRAE</td>
+            <td class="method-col">Dr.GRPO + A-GRAE</td>
             <td class="best">46.8</td>
             <td class="best">25.6</td>
             <td class="best">38.4</td>
@@ -978,49 +983,49 @@
             <td colspan="4">Task B: Medical Imaging Reasoning</td>
           </tr>
           <tr>
-            <td style="text-align: left;"></td>
+            <td class="method-col"></td> <!-- 空的Method列 -->
             <th>MRI300</th>
             <th>CT300</th>
             <th>Xray300</th>
           </tr>
           <tr>
-            <td style="text-align: left;">base model</td>
+            <td class="method-col">base model</td>
             <td>35.6</td>
             <td>42.5</td>
             <td>42.0</td>
           </tr>
           <tr>
-            <td style="text-align: left;">GRPO</td>
+            <td class="method-col">GRPO</td>
             <td>87.2</td>
             <td>71.7</td>
             <td>63.2</td>
           </tr>
           <tr class="a-grae-row">
-            <td style="text-align: left;">GRPO + A-GRAE</td>
+            <td class="method-col">GRPO + A-GRAE</td>
             <td class="second">88.2</td>
             <td class="second">73.1</td>
             <td>71.3</td>
           </tr>
           <tr>
-            <td style="text-align: left;">DAPO</td>
+            <td class="method-col">DAPO</td>
             <td>84.3</td>
             <td>71.6</td>
             <td>63.1</td>
           </tr>
           <tr class="a-grae-row">
-            <td style="text-align: left;">DAPO + A-GRAE</td>
+            <td class="method-col">DAPO + A-GRAE</td>
             <td>87.0</td>
             <td>72.3</td>
             <td class="second">71.6</td>
           </tr>
           <tr>
-            <td style="text-align: left;">Dr.GRPO</td>
+            <td class="method-col">Dr.GRPO</td>
             <td>87.8</td>
             <td>72.4</td>
             <td>69.5</td>
           </tr>
           <tr class="a-grae-row">
-            <td style="text-align: left;">Dr.GRPO + A-GRAE</td>
+            <td class="method-col">Dr.GRPO + A-GRAE</td>
             <td class="best">89.0</td>
             <td class="best">73.6</td>
             <td class="best">72.0</td>
