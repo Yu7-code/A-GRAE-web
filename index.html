@@ -361,16 +361,16 @@
        </div>
 
 
-   <div style="font-family: 'Times New Roman', serif; font-size: 16px; line-height: 1.6; margin: 20px 0; padding-left: 10px;">
+   <div style="font-family: 'Times New Roman', serif; font-size: 18px; line-height: 1.8; margin: 20px 0; padding-left: 10px;">
       <strong>Control Experiment I (Breaking Intra-Group Symmetry):</strong>
-      <p style="margin: 8px 0 10px 0; text-align: justify;">
-        This experiment examines whether the model benefits more from suppressing the contribution of correct trajectories. To achieve this, we introduce a scaling coefficient β=10 to disrupt the zero-sum equilibrium (∑Aᵢ = 0). Denoting the original positive advantage as A<sub>pos</sub>, we design two variants:
+      <p style="margin: 10px 0 12px 0; text-align: justify;">
+        This experiment examines whether the model benefits more from suppressing the contribution of correct trajectories. To achieve this, we introduce a scaling coefficient β=10 to disrupt the zero-sum equilibrium (∑A<sub>i</sub> = 0). Denoting the original positive advantage as A<sub>pos</sub>, we design two variants:
       </p>
-      <ol style="padding-left: 30px; margin: 0 0 10px 0;">
-        <li style="margin-bottom: 5px;">
+      <ol style="padding-left: 30px; margin: 0 0 12px 0;">
+        <li style="margin-bottom: 8px;">
           <i>Positive-Dominant Group:</i> We scale up positive advantages (A<sub>pos</sub>* = β · A<sub>pos</sub>).
         </li>
-        <li style="margin-bottom: 5px;">
+        <li style="margin-bottom: 8px;">
           <i>Negative-Dominant Group:</i> We scale down positive advantages (A<sub>pos</sub>* = A<sub>pos</sub> / β).
         </li>
       </ol>
@@ -392,17 +392,17 @@
     <div class="background-box"><b>Takeaway 1:</b> At the group level, while suppressing positive advantage incentivizes the model to explore unsampled correct trajectories to improve the reasoning ability, it simultaneously introduces the risk of training collapse in the later stages of reinforcement learning . Consequently, a dynamic adjustment mechanism may be required as training progresses.</div>
 
 
-    <div style="font-family: 'Times New Roman', serif; font-size: 16px; line-height: 1.6; margin: 20px 0; padding-left: 10px;">
+    <div style="font-family: 'Times New Roman', serif; font-size: 18px; line-height: 1.8; margin: 20px 0; padding-left: 10px;">
       <strong>Control Experiment II (Breaking Sample-Level Symmetry):</strong>
-      <p style="margin: 8px 0 10px 0; text-align: justify;">
-        This experiment investigates the appropriate difficulty focus during training process. We modify the advantage magnitude based on the sampling success rate p. Let Aᵢ be the original advantage of GRPO. We define two curriculum variants:
+      <p style="margin: 10px 0 12px 0; text-align: justify;">
+        This experiment investigates the appropriate difficulty focus during training process. We modify the advantage magnitude based on the sampling success rate <i>p</i>. Let A<sub>i</sub> be the original advantage of GRPO. We define two curriculum variants:
       </p>
-      <ol style="padding-left: 30px; margin: 0 0 10px 0;">
-        <li style="margin-bottom: 5px;">
-          <i>Hard-Focused Group:</i> We shift the learning focus toward harder queries by rescaling the advantage with the factor 1/√p (Aᵢ* = γ · Aᵢ/√p).
+      <ol style="padding-left: 30px; margin: 0 0 12px 0;">
+        <li style="margin-bottom: 8px;">
+          <i>Hard-Focused Group:</i> We shift the learning focus toward harder queries by rescaling the advantage with the factor 1/&radic;<i>p</i> (A<sub>i</sub>* = γ · A<sub>i</sub>/&radic;<i>p</i>).
         </li>
-        <li style="margin-bottom: 5px;">
-          <i>Easy-Focused Group:</i> Conversely, we shift the focus to simple queries by scaling with the factor 1/√(1-p) (Aᵢ* = γ · Aᵢ/√(1-p)).
+        <li style="margin-bottom: 8px;">
+          <i>Easy-Focused Group:</i> Conversely, we shift the focus to simple queries by scaling with the factor 1/&radic;(1-<i>p</i>) (A<sub>i</sub>* = γ · A<sub>i</sub>/&radic;(1-<i>p</i>)).
         </li>
       </ol>
       <p style="margin: 0; text-align: justify;">
