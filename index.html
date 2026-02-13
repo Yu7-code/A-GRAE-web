@@ -43,6 +43,7 @@
   <script src="static/js/bulma-carousel.min.js"></script>
   <script src="static/js/bulma-slider.min.js"></script>
   <script src="static/js/index.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
     <style>
       .tree-container {
@@ -156,10 +157,57 @@
             flex-wrap: wrap; /* 允许换行 */
             margin: 20px 0; /* 外边距 */
         }
-        .image-container img {
-            width: 40%; /* 设置每张图片的宽度为 48% */
-            height: auto; /* 保持比例 */
-            margin: 3%; /* 图片间距 */
+        .image-container.img-1 img {
+            width: 80%; /* 单张图占80%宽度，居中显示 */
+            height: auto;
+        }
+
+        /* 场景2：容器内放2张图片 */
+        .image-container.img-2 img {
+            width: 45%; /* 2张×45% = 90%，剩余10%用gap填充（2%）+ 留白 */
+            height: auto;
+        }
+
+        /* 场景3：容器内放3张图片 */
+        .image-container.img-3 img {
+            width: 30%; /* 3张×30% = 90%，剩余10%用gap填充（2%×2）+ 留白 */
+            height: auto;
+        }
+
+        mjx-container {
+          font-size: 1.1em !important;
+        }
+        /* 段落间距和对齐 */
+        .content p {
+          margin-bottom: 1.2em;
+        }
+
+        table th, table td {
+          border: 1px solid #ddd;
+          padding: 6px 8px;
+          vertical-align: middle;
+        }
+        /* 表头样式 */
+        table th {
+          background-color: #f2f2f2;
+          font-weight: bold;
+        }
+        /* 最优结果（加粗） */
+        .best {
+          font-weight: bold;
+        }
+        /* 次优结果（下划线） */
+        .second {
+          text-decoration: underline;
+        }
+        /* 浅蓝色行背景（A-GRAE 行） */
+        .a-grae-row {
+          background-color: #f0f8ff; /* aliceblue 对应色值 */
+        }
+        /* 分组标题行 */
+        .group-title td {
+          font-weight: bold;
+          background-color: #f8f8f8;
         }
         
   </style>
@@ -176,27 +224,17 @@
             <h1 class="title is-1 publication-title">Exploring the Vulnerabilities of Federated Learning: A Deep Dive into Gradient Inversion Attacks</h1>
             <div class="is-size-5 publication-authors">
               <!-- Paper authors -->
-              <span class="author-block"> <a href="https://pengxin-guo.github.io/" target="_blank">Pengxin Guo</a><sup>1,*</sup>,</span>
-              <span class="author-block"> <a href="https://scholar.google.com/citations?user=wClrSiMAAAAJ&hl=en" target="_blank">Runxi Wang</a><sup>1,*</sup>,</span>
-              <span class="author-block"> <a href="https://scholar.google.com/citations?user=yTP1oqkAAAAJ&hl=en" target="_blank">Shuang Zeng</a><sup>1</sup>,</span>
-              <span class="author-block"> <a href="https://scholar.google.com/citations?user=EVpo9eQAAAAJ&hl=en" target="_blank">Jinjing Zhu</a><sup>2</sup>,</span>
-              <span class="author-block"> <a href="https://scholar.google.com/citations?user=wLV51BoAAAAJ&hl=en" target="_blank">Haoning Jiang</a><sup>3</sup>,</span>
-              <span class="author-block"> <a href="http://www.yanranwang.com/" target="_blank">Yanran Wang</a><sup>4</sup>,</span>
-              <span class="author-block"> <a href="https://yuyinzhou.github.io/" target="_blank">Yuyin Zhou</a><sup>5</sup>,</span>
-              <span class="author-block"> <a href="https://www.eee.hku.hk/~ffwang/" target="_blank">Feifei Wang</a><sup>1</sup>,</span>
-              <span class="author-block"> <a href="https://scholar.google.com.hk/citations?user=cVDF1tkAAAAJ&hl=en" target="_blank">Hui Xiong</a><sup>2</sup>,</span>
+              <span class="author-block"> <a href="https://scholar.google.com.hk/citations?hl=zh-CN&view_op=list_works&gmla=APjjwuaI50LUxK-2h0OoQpnLQFrolcSrzsBKXU9MEv6vHu-_qCAlkgf0ZbI79bKOaS2TVIvvM_hBlVMWv_dqnos_aA638TBScKKaLhEi8RYoeKSqkNEmtwdsuUXjdYYBrgg&user=dRv9W2YAAAAJ" target="_blank">Zhiqi Yu</a><sup>1,*</sup>,</span>
+              <span class="author-block"> <a href="https://github.com/zhangquanchen" target="_blank">Zhangquan Chen</a><sup>2,*</sup>,</span>
+              <span class="author-block"> <a href="https://scholar.google.com/citations?hl=en&user=vK9V8e0AAAAJ&view_op=list_works&sortby=pubdate" target="_blank">Mengting Liu</a><sup>3</sup>,</span>
+              <span class="author-block"> <a href="https://hic-sysu.github.io/page/" target="_blank">Heye Zhang</a><sup>2</sup>,</span>
               <span class="author-block"> <a href="https://liangqiong.github.io/" target="_blank">Liangqiong Qu</a><sup>1,&#8224;</sup></span>
             </div>
 
             <div class="is-size-5 publication-authors">
               <span class="author-block"><sup>1</sup>The University of Hong Kong,</span>
-              <span class="author-block"><sup>2</sup>The Hong Kong University of Science and Technology (Guangzhou),</span>
-              <span class="author-block"><sup>3</sup>Southern University of Science and Technology,</span>
-              <span class="author-block"><sup>4</sup>Stanford University,</span>
-              <span class="author-block"><sup>5</sup>UC Santa Cruz</span>
-              <span> <br> IEEE TPAMI, 2025</span>
-              <span class="eql-cntrb"><small><br><sup>*</sup>Equal Contribution</small></span>
-              <span class="eql-cntrb"><small><br><sup>&#8224;</sup>Corresponding Author</small></span>
+              <span class="author-block"><sup>2</sup>Tsinghua University,</span>
+              <span class="author-block"><sup>3</sup>Sun Yat-sen University,</span>
             </div>
             
 
@@ -204,18 +242,18 @@
               <div class="publication-links">
                     <!-- Paper PDF link -->
                 <span class="link-block">
-                  <a href="https://ieeexplore.ieee.org/document/11311346" target="_blank"
+                  <a href="https://huggingface.co/papers/2602.05548" target="_blank"
                   class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                     <i class="fas fa-file-pdf"></i>
                   </span>
-                  <span>Paper</span>
+                  <span>Huggingface</span>
                 </a>
               </span>
 
               <!-- ArXiv abstract Link -->
               <span class="link-block">
-                <a href="https://arxiv.org/abs/2503.11514" target="_blank"
+                <a href="https://arxiv.org/pdf/2602.05548" target="_blank"
                 class="external-link button is-normal is-rounded is-dark">
                 <span class="icon">
                   <i class="ai ai-arxiv"></i>
@@ -237,7 +275,7 @@
 
             <!-- Github link -->
             <span class="link-block">
-              <a href="https://github.com/1wrx1/GIA" target="_blank"
+              <a href="https://github.com/HKU-HealthAI/A-GRAE" target="_blank"
               class="external-link button is-normal is-rounded is-dark">
               <span class="icon">
                 <i class="fab fa-github"></i>
@@ -246,7 +284,7 @@
             </a>
           </span>
 
-          <!-- Awesome link -->
+          <!-- Awesome link
           <span class="link-block">
             <a href="https://github.com/Pengxin-Guo/Awesome-Gradient-Inversion-Attacks" target="_blank"
             class="external-link button is-normal is-rounded is-dark">
@@ -255,7 +293,7 @@
             </span>
             <span>Awesome-GIA-Tracking</span>
           </a>
-        </span>
+        </span> -->
 
         </div>
         </div>
@@ -274,8 +312,14 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Federated Learning (FL) has emerged as a promising privacy-preserving collaborative model training paradigm without sharing raw data. However, recent studies have revealed that private information can still be leaked through shared gradient information and attacked by Gradient Inversion Attacks (GIA). While many GIA methods have been proposed, a detailed analysis, evaluation, and summary of these methods are still lacking. Although various survey papers summarize existing privacy attacks in FL, few studies have conducted extensive experiments to unveil the effectiveness of GIA and their associated limiting factors in this context.
-            To fill this gap, we first undertake a systematic review of GIA and categorize existing methods into three types, i.e., <i>optimization-based</i> GIA (OP-GIA), <i>generation-based</i> GIA (GEN-GIA), and <i>analytics-based</i> GIA (ANA-GIA). Then, we comprehensively analyze and evaluate the three types of GIA in FL, providing insights into the factors that influence their performance, practicality, and potential threats. Our findings indicate that OP-GIA is the most practical attack setting despite its unsatisfactory performance, while GEN-GIA has many dependencies and ANA-GIA is easily detectable, making them both impractical. Finally, we offer a three-stage defense pipeline to users when designing FL frameworks and protocols for better privacy protection and share some future research directions from the perspectives of attackers and defenders that we believe should be pursued. We hope that our study can help researchers design more robust FL frameworks to defend against these attacks.
+            Reinforcement Learning with Verifiable Rewards (RLVR), particularly GRPO, has become the standard for eliciting LLM reasoning. 
+            However, its efficiency in exploration and difficulty adaptation remains an open challenge. In this work, we argue that these 
+            bottlenecks stem from an implicit advantage symmetry inherent in Group Relative Advantage Estimation (GRAE). 
+            This symmetry induces two critical limitations: (i) at the group level, strict symmetry in weights between correct and incorrect trajectories 
+            leaves unsampled action logits unchanged, thereby hindering exploration of novel correct solution. (ii) at the sample level, the algorithm implicitly prioritizes medium-difficulty samples, 
+            remaining agnostic to the non-stationary demands of difficulty focus. Through controlled experiments, we reveal that this symmetric property is sub-optimal, yielding two pivotal insights: 
+            (i) asymmetrically suppressing the advantages of correct trajectories encourages essential exploration; (ii) learning efficiency is maximized by a curriculum-like transition—prioritizing simpler samples initially before gradually shifting to complex ones. 
+            Motivated by these findings, we propose Asymmetric GRAE (A-GRAE), which dynamically modulates exploration incentives and sample-difficulty focus. Experiments across seven benchmarks demonstrate that A-GRAE consistently improves GRPO and its variants across both LLMs and MLLMs.
           </p>
         </div>
       </div>
@@ -287,163 +331,16 @@
 
 <!-- Paper content 1 -->
 <section class="hero is-small">
-  <div class="hero-body">
-    <div class="container is-max-desktop">
+  <div class="container is-max-desktop">
       <div id="results-carousel">
 
        <div class="columns is-centered has-text-centered">
-        <h2 class="title is-3">Overview</h2>
+        <h2 class="title is-3">What is the advantage symmetry in GRPO?</h2>
        </div>
-
-       <div class="tree-container">
-        <!-- 第一层 -->
-        <div class="level">
-            <div class="node root-node">GIA</div>
-        </div>
-        <!-- 第二层 -->
-        <div class="level">
-            <!-- 节点1-->
-            <div style="position: relative;">
-                <div class="line horizontal" style="width: 10px; top: 50%; left: -10px;"></div>
-                <div class="line vertical" style="height: 211px; top: 50%; left: -10px;"></div>
-                <div class="node op-gia" style="width: 170px; height: 50px; text-align:left;">Optimization-based GIA <br> (OP-GIA)</div>
-            </div>
-            <!-- 节点2 -->
-            <div style="position: relative;">
-                <div class="line horizontal" style="width: 20px; top: 50%; left: -20px;"></div>
-                <div class="node gen-gia" style="width: 170px; height: 50px; text-align:left">Generation-based GIA <br> (GEN-GIA)</div>
-            </div>
-            <!-- 节点3 -->
-            <div style="position: relative;">
-              <div class="line horizontal" style="width: 10px; top: 50%; left: -10px;"></div>
-              <div class="node ana-gia" style="width: 170px; height: 50px; text-align:left;">Analytics-based GIA <br> (ANA-GIA)</div>
-          </div>
-        </div>
-        <!-- 第三层 -->
-        <div class="level">
-            <!-- 节点0 -->
-            <div style="position: relative;">
-              <div class="line horizontal" style="width: 20px; top: 65px; left: -20px;"></div>
-              <div class="node op-gia-works" style="width: 600px; height: 87px; margin-top: 18px;">
-                <p>
-                DLG [<a href="https://proceedings.neurips.cc/paper/2019/hash/60a6c4002cc7b29142def8871531281a-Abstract.html" target="_blank">1</a>], 
-                iDLG [<a href="https://arxiv.org/abs/2001.02610" target="_blank">2</a>], 
-                SAPAG [<a href=https://arxiv.org/abs/2009.06228" target="_blank">3</a>], 
-                IG [<a href="https://proceedings.neurips.cc/paper/2020/hash/c4ede56bbd98819ae6112b20ac6bf145-Abstract.html" target="_blank">4</a>], 
-                Geng et al. [<a href="https://arxiv.org/abs/2110.09074" target="_blank">5</a>], 
-                GradInversion [<a href="https://openaccess.thecvf.com/content/CVPR2021/html/Yin_See_Through_Gradients_Image_Batch_Recovery_via_GradInversion_CVPR_2021_paper.html" target="_blank">6</a>], 
-                CAFE [<a href="https://proceedings.neurips.cc/paper_files/paper/2021/hash/08040837089cdf46631a10aca5258e16-Abstract.html" target="_blank">7</a>], 
-                APRIL [<a href="https://openaccess.thecvf.com/content/CVPR2022/html/Lu_APRIL_Finding_the_Achilles_Heel_on_Privacy_for_Vision_Transformers_CVPR_2022_paper.html" target="_blank">8</a>], 
-                GradViT [<a href="https://openaccess.thecvf.com/content/CVPR2022/html/Hatamizadeh_GradViT_Gradient_Inversion_of_Vision_Transformers_CVPR_2022_paper.html" target="_blank">9</a>], 
-                Dimitrov et al. [<a href="https://openreview.net/forum?id=e7A0B99zJf" target="_blank">10</a>], 
-                ROG [<a href="https://www.usenix.org/conference/usenixsecurity23/presentation/yue" target="_blank">11</a>], 
-                CPA [<a href="https://proceedings.mlr.press/v202/kariyappa23a.html" target="_blank">12</a>], 
-                iLRG [<a href="https://openreview.net/forum?id=FIrQfNSOoTr" target="_blank">13</a>], 
-                Wang et al. [<a href="https://openreview.net/forum?id=s8cMuxI5gu" target="_blank">14</a>], 
-                HFG [<a href="https://ieeexplore.ieee.org/abstract/document/10604429" target="_blank">15</a>], 
-                SEER [<a href="https://openreview.net/forum?id=krx55l2A6G" target="_blank">16</a>], 
-                MGIC [<a href="https://arxiv.org/abs/2403.08284" target="_blank">17</a>], 
-                AFGI [<a href=https://arxiv.org/abs/2403.08383" target="_blank">18</a>], 
-                GI-SMN [<a href="https://link.springer.com/chapter/10.1007/978-981-97-5603-2_36" target="_blank">19</a>], 
-                GI-NAS [<a href="https://arxiv.org/abs/2405.20725" target="_blank">20</a>], 
-                DLG-FB [<a href="https://arxiv.org/abs/2409.17767" target="_blank">21</a>],
-                HF-GradInv [<a href="https://ojs.aaai.org/index.php/AAAI/article/view/29975" target="_blank">22</a>],
-                GI-PIP [<a href="https://ieeexplore.ieee.org/document/10445924" target="_blank">23</a>],
-                TGIAs-RO [<a href="https://ieeexplore.ieee.org/abstract/document/10848255" target="_blank">24</a>],
-                Mjölnir [<a href="https://ojs.aaai.org/index.php/AAAI/article/view/34829" target="_blank">25</a>],
-                NL-SME [<a href="https://arxiv.org/abs/2509.22082" target="_blank">26</a>]
-              </p></div>
-            </div>
-            <!-- 节点1 -->
-            <div style="position: relative;">
-                <div class="line horizontal" style="width: 10px; top: 50%; left: -310px;"></div>
-                <div class="line vertical" style="height: 100px; top: 50%; left: -310px;"></div>
-                <div class="node gen-gia-category" style="width: 270px; margin-left: -300px;">Optimizing Latent Vector z</div>
-            </div>
-            <!-- 节点2 -->
-            <div style="position: relative;">
-                <div class="line horizontal" style="width: 20px; top: 50%; left: -320px;"></div>
-                <div class="node gen-gia-category" style="width: 270px; margin-left: -300px;">Optimizing Generator's Parameters W</div>
-            </div>
-            <!-- 节点3 -->
-            <div style="position: relative;">
-                <div class="line horizontal" style="width: 10px; top: 50%; left: -310px;"></div>
-                <div class="node gen-gia-category" style="width: 270px; margin-left: -300px;">Training an Inversion Generation Model</div>
-            </div>
-            <!-- 节点4 -->
-            <div style="position: relative;">
-                <div class="line horizontal" style="width: 20px; top: 50%; left: -320px;"></div>
-                <div class="line vertical" style="height: 57px; top: 50%; left: -310px;"></div>
-                <div class="node ana-gia-category" style="width: 270px; margin-left: -300px;">Manipulating Model Architecture</div>
-            </div>
-            <!-- 节点5 -->
-            <div style="position: relative;">
-              <div class="line horizontal" style="width: 10px; top: 70%; left: -310px;"></div>
-              <div class="node ana-gia-category" style="width: 270px; margin-left: -300px; top: 7px;">Manipulating Model Parameters</div>
-            </div>
-        </div>
-        <!-- 第四层 -->
-        <div class="level">
-            <!-- 节点0 -->
-            <div style="position: relative;">
-                <div style="height: 70px; margin-top: 45px; margin-left: -360px;"></div>
-            </div>
-            <!-- 节点1 -->
-            <div style="position: relative;">
-              <div class="line horizontal" style="width: 30px; top: 65%; left: -350px;"></div>
-              <div class="node gen-gia-works" style="width: 300px; margin-left: -320px; top: 8px;">
-                <p>
-                  GIAS [<a href="https://proceedings.neurips.cc/paper/2021/hash/fa84632d742f2729dc32ce8cb5d49733-Abstract.html" target="_blank">27</a>], 
-                  GGL [<a href="https://openaccess.thecvf.com/content/CVPR2022/html/Li_Auditing_Privacy_Defenses_in_Federated_Learning_via_Generative_Gradient_Leakage_CVPR_2022_paper.html" target="_blank">28</a>], 
-                  GIFD [<a href="https://openaccess.thecvf.com/content/ICCV2023/html/Fang_GIFD_A_Generative_Gradient_Inversion_Method_with_Feature_Domain_Optimization_ICCV_2023_paper.html" target="_blank">29</a>]
-              </p></div>
-          </div>
-          <!-- 节点2 -->
-          <div style="position: relative;">
-              <div class="line horizontal" style="width: 30px; top: 90%; left: -350px;"></div>
-              <div class="node gen-gia-works" style="width: 300px; margin-left: -320px; top: 17px;">
-                <p>
-                  GRNN [<a href="https://dl.acm.org/doi/abs/10.1145/3510032" target="_blank">30</a>], 
-                  CGIR [<a href="https://ieeexplore.ieee.org/document/9980415/" target="_blank">31</a>],
-                  CI-Net [<a href="https://openaccess.thecvf.com/content/ICCV2023/html/Zhang_Generative_Gradient_Inversion_via_Over-Parameterized_Networks_in_Federated_Learning_ICCV_2023_paper.html" target="_blank">32</a>], 
-                  GIRG [<a href="https://ieeexplore.ieee.org/abstract/document/10495167" target="_blank">33</a>]
-              </p></div>
-          </div>
-          <!-- 节点3 -->
-          <div style="position: relative;">
-              <div class="line horizontal" style="width: 30px; top: 115%; left: -350px;"></div>
-              <div class="node gen-gia-works" style="width: 300px; margin-left: -320px; top: 27px;">
-                <p>
-                  LTI [<a href="https://proceedings.mlr.press/v216/wu23a.html" target="_blank">34</a>], 
-                  GLFA [<a href="https://ieeexplore.ieee.org/abstract/document/10229091" target="_blank">35</a>]
-                </p></div>
-          </div>
-          <!-- 节点4 -->
-          <div style="position: relative;">
-              <div class="line horizontal" style="width: 30px; top: 115%; left: -350px;"></div>
-              <div class="node ana-gia-works" style="width: 300px; height: 50px; margin-left: -320px; top: 32px;">
-                <p>
-                  Robbing the Fed [<a href="https://openreview.net/forum?id=fwzUgo0FM9v&ref=morioh.com&utm_source=morioh.com" target="_blank">36</a>], 
-                  Zhao et al. [<a href="https://openaccess.thecvf.com/content/CVPR2023/html/Zhao_The_Resource_Problem_of_Using_Linear_Layer_Leakage_Attack_in_CVPR_2023_paper.html" target="_blank">37</a>],
-                  LOKI [<a href="https://ieeexplore.ieee.org/abstract/document/10646724" target="_blank">38</a>]
-                </p></div>
-          </div>
-          <!-- 节点5 -->
-          <div style="position: relative;">
-            <div class="line horizontal" style="width: 30px; top: 125%; left: -350px;"></div>
-            <div class="node ana-gia-works" style="width: 300px; height: 50px; margin-left: -320px; top: 38px;">
-              <p>
-                Pasquini et al. [<a href="https://dl.acm.org/doi/abs/10.1145/3548606.3560557" target="_blank">39</a>], 
-                Fishing [<a href="https://proceedings.mlr.press/v162/wen22a.html" target="_blank">40</a>], 
-                Trap Weights [<a href="https://ieeexplore.ieee.org/abstract/document/10190537" target="_blank">41</a>], 
-                MKOR [<a href="https://openaccess.thecvf.com/content/WACV2024/html/Wang_Maximum_Knowledge_Orthogonality_Reconstruction_With_Gradients_in_Federated_Learning_WACV_2024_paper.html" target="_blank">42</a>],
-                Scale-MIA [<a href="https://www.ndss-symposium.org/ndss-paper/scale-mia-a-scalable-model-inversion-attack-against-secure-federated-learning-via-latent-space-reconstruction/" target="_blank">43</a>]
-              </p></div>
-          </div>
-        </div>
-      </div>
-
-      <p>Figure 1. Taxonomy of existing GIA methods. The existing GIA methods can be divided into three types: optimization-based GIA (<b>OP-GIA</b>), which works by minimizing the distance between received gradients and gradients computed from dummy data; generation-based GIA (<b>GEN-GIA</b>), which utilizes a generator to reconstruct input data; and analytics-based GIA (<b>ANA-GIA</b>), which aims to recover input data in closed form. Moreover, GEN-GIA can be further divided into three categories: optimizing the latent vector z, optimizing the generator’s parameters W, and training an inversion generation model. ANA-GIA can be further divided into two categories: manipulating model architecture and manipulating model parameters. We also provide a public repository to continually track developments in this fast-evolving field: <a href="https://github.com/Pengxin-Guo/Awesome-Gradient-Inversion-Attacks" target="_blank">Awesome-Gradient-Inversion-Attacks</a>. </p>
+   <div class="image-container img-1">
+        <img src="static/image/motivation.png" alt="fig">
+    </div>
+    <p><strong>Figure 1. The two-fold implicit advantage symmetry problem of GRAE in GRPO.</strong> At the group level, the advantage weights for correct trajectories equal those of incorrect trajectories. This symmetry leads to the logits of low-probability correct paths unchanged within the behavior space, thereby hindering the model's exploration. At the sample level, samples of medium-difficulty exhibit the largest sum of absolute advantage values, which leads to insufficient training on harder data. </p>
   
       </div>  
   </div>
@@ -458,201 +355,683 @@
     <div class="container is-max-desktop">
       <div id="results-carousel">
       <div class="columns is-centered has-text-centered">
-        <h2 class="title is-3">Experimental Results<br></h2>
+        <h2 class="title is-3">Deconstructing the Implicit Advantage Symmetry of GRAE<br></h2>
        </div>
 
-      Table 1. Comparison of different types of GIA methods in terms of influence factors, reconstruction results, and extra reliance of each type of method. Influence factors include batch size, image resolution, model training state, the number of the same labels in one batch data, network architecture, and practical FedAvg with multiple local training steps. Reconstruction results include whether the reconstruction results are the original inputs and the visual quality of the reconstruction results.
-      <table style="text-align: center;">
-        <thead>
-            <tr>
-                <th rowspan="2">Taxonomy</th>
-                <th></th>
-                <th colspan="6">Influence Factors</th>
-                <th colspan="2">Reconstruction Results</th>
-                <th rowspan="2">Extra Reliance</th>
-            </tr>
-            <tr>
-                <th></th>
-                <th>Batch Size</th>
-                <th>Image Resolution</th>
-                <th># Same Label</th>
-                <th>Model Training State</th>
-                <th>Network Architecture</th>
-                <th>Practical FedAvg</th>
-                <th>Original Inputs?</th>
-                <th>Visual Quality</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>OP-GIA</td>
-                <td>-</td>
-                <td class="checkmark">&#10003;</td>
-                <td class="checkmark">&#10003;</td>
-                <td class="checkmark">&#10003;</td>
-                <td class="checkmark">&#10003;</td>
-                <td class="checkmark">&#10003;</td>
-                <td class="checkmark">&#10003;</td>
-                <td>Yes</td>
-                <td>Low</td>
-                <td>No</td>
-            </tr>
-            <tr>
-                <td rowspan="3">GEN-GIA</td>
-                <td>Opti. Lat. Vec.</td>
-                <td class="cross">&#10005;</td>
-                <td class="cross">&#10005;</td>
-                <td class="cross">&#10005;</td>
-                <td class="cross">&#10005;</td>
-                <td class="cross">&#10005;</td>
-                <td class="cross">&#10005;</td>
-                <td>No</td>
-                <td>High</td>
-                <td>Trained Generator</td>
-            </tr>
-            <tr>
-                <td>Opti. Gen. Para.</td>
-                <td class="checkmark">&#10003;</td>
-                <td class="checkmark">&#10003;</td>
-                <td class="checkmark">&#10003;</td>
-                <td class="checkmark">&#10003;</td>
-                <td class="checkmark">&#10003;</td>
-                <td class="checkmark">&#10003;</td>
-                <td>Yes</td>
-                <td>Middle</td>
-                <td>Sigmoid Activation</td>
-            </tr>
-            <tr>
-                <td>Train. Inv. Mod.</td>
-                <td class="checkmark">&#10003;</td>
-                <td class="checkmark">&#10003;</td>
-                <td class="checkmark">&#10003;</td>
-                <td class="cross">&#10005;</td>
-                <td class="checkmark">&#10003;</td>
-                <td class="checkmark">&#10003;</td>
-                <td>Yes</td>
-                <td>Low</td>
-                <td>Auxiliary Dataset</td>
-            </tr>
-            <tr>
-                <td rowspan="2">ANA-GIA</td>
-                <td>Manip. Mod. Arch.</td>
-                <td class="cross">&#10005;</td>
-                <td class="cross">&#10005;</td>
-                <td class="cross">&#10005;</td>
-                <td class="cross">&#10005;</td>
-                <td class="cross">&#10005;</td>
-                <td class="cross">&#10005;</td>
-                <td>Yes</td>
-                <td>High</td>
-                <td>Malicious Server</td>
-            </tr>
-            <tr>
-                <td>Manip. Mod. Para.</td>
-                <td class="cross">&#10005;</td>
-                <td class="checkmark">&#10003;</td>
-                <td class="cross">&#10005;</td>
-                <td class="checkmark">&#10003;</td>
-                <td class="checkmark">&#10003;</td>
-                <td class="cross">&#10005;</td>
-                <td>Yes</td>
-                <td>Middle</td>
-                <td>Malicious Server</td>
-            </tr>
-        </tbody>
-    </table>
-  
-      <h2 class="title"> Key Findings</h2>
-      <div class="background-box"><b>Takeaway 1:</b> OP-GIA has no additional reliance, but its performance is not satisfactory and is affected by many factors. Larger batch size, higher image resolution, more complicated network architecture, better model training state, and more same labels in one batch lead to worse OP-GIA performance.</div>
-      <div class="image-container">
-        <img src="static/images/SSIM.png" alt="fig">
-        <img src="static/images/SSIM_cifar100_various_arch.png" alt="fig">
-      </div>
-      <p style="margin-top: -40px;">Figure 2. <i>left.</i> Reconstruction results of IG evaluated on models in different training states on various datasets with different image resolutions and batch sizes. <i>right.</i> Reconstruction results of IG with different network architectures on the CIFAR-100 dataset. The shaded region represents the standard deviation. These results show that a larger batch size, higher image resolution, more complicated network architecture, and better model training state lead to worse OP-GIA performance.</p>
-      
-      <div class="background-box"><b>Takeaway 2:</b> GEN-GIA has many dependencies, which makes it pose a minimal threat to FL. Some GEN-GIA methods (i.e., optimizing latent vector z) can only achieve semantic-level recovery and heavily rely on the pre-trained generator. Other GEN-GIA methods (i.e., optimizing generator's parameters W and training an inversion model) can perform pixel-level attacks, but they have strong dependencies, such as reliance on the Sigmoid function and an auxiliary dataset.</div>
-      
-      <div>
-        <img src="static/images/ggl_vis_imagenet_cifar100.png" alt="fig">
-      </div>
-      <p>Figure 3. Reconstruction results of GGL. (a)-(c) Reconstruction results on the ImageNet dataset: (a) with different batch sizes and model training states; (b) under practical FedAvg scenario; (c) with random Gaussian noise. The ground truth for (b) and (c) is similar to (a) and is omitted. (d) Reconstruction results on the CIFAR-100 dataset with a batch size of one and an untrained model. These results show that when optimizing the latent vector z, GEN-GIA can generate semantically similar images and is not affected by the factors influencing OP-GIA. However, it heavily relies on the pre-trained generator and only can achieve semantic-level recovery.</p>
-
-      <div class="image-container">
-        <img src="static/images/CI-Net-SSIM.png" alt="fig">
-        <img src="static/images/CI-Net-bs.png" alt="fig">
-      </div>
-      <p style="margin-top: -40px;">Figure 4. <i>left.</i> Reconstruction results of CI-Net evaluated on ResNet-18 with different activation functions on various datasets with different batch sizes. <i>right.</i> Reconstruction results of CI-Net on ImageNet with different resolutions under the Sigmoid activation function. These results show that GEN-GIA with optimizing the generator's parameters W is affected by the factors that influence OP-GIA. Moreover, it only works when the target model adopts the Sigmoid activation function and fails with other activation functions.</p>
-
-      <div class="image-container">
-        <img src="static/images/LTI-model.png" alt="fig">
-        <img src="static/images/LTI-resolution.png" alt="fig">
-      </div>
-      <p style="margin-top: -40px;">Figure 5. <i>left.</i> Reconstruction results of LTI evaluated on different models with different training states on CIFAR-10 with different batch sizes. <i>right.</i> Reconstruction results of LTI on different datasets with different resolutions on LeNet. These results show that when training an inversion generation model, GEN-GIA can achieve pixel-level attacks but is influenced by most of the factors that affect OP-GIA, except for the model's training state.</p>
-
-
-      <div class="background-box"><b>Takeaway 3:</b> ANA-GIA can achieve satisfactory attack performance but is easily detected and defended against by clients.</div>
-      
-      Table 2. The number of reconstruction images of Robbing the Fed with 1000 bins on different batch sizes. It shows that ANA-GIA, when manipulating model architecture, can achieve great attack performance irrespective of batch size, image resolution, or model training state, provided it adopts a relatively large number of bins.
-      <table style="text-align: center; width: 60%; margin: 20px auto;">
-        <thead>
-            <tr>
-                <th>Batch Size</th>
-                <th>CIFAR-10</th>
-                <th>CIFAR-100</th>
-                <th>ImageNet</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>64/64</td>
-                <td>64/64</td>
-                <td>64/64</td>
-            </tr>
-            <tr>
-                <td>8</td>
-                <td>63/64</td>
-                <td>64/64</td>
-                <td>64/64</td>
-            </tr>
-            <tr>
-                <td>32</td>
-                <td>60/64</td>
-                <td>61/64</td>
-                <td>64/64</td>
-            </tr>
-            <tr>
-                <td>64</td>
-                <td>60/64</td>
-                <td>60/64</td>
-                <td>61/64</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <div class="image-container">
-      <img src="static/images/Fish.png" alt="fig">
-      <img src="static/images/fish_arch.png" alt="fig">
+    <div class="image-container img-2">
+      <img src="static/image/AMC23_Pass_k_comparisonv2.png" alt="fig">
+      <img src="static/image/AIME2025_Pass_k_comparisonv2.png" alt="fig">
+      <img src="static/image/MATH_Pass_k_comparison_v2.png" alt="fig">
+      <img src="static/image/dynamics_entropy_actor.png" alt="fig">
     </div>
-    <p style="margin-top: -40px;">Figure 6. Reconstruction results of Fishing on ImageNet with different image resolutions and model training states, and network architectures. These results show that the attack performance of ANA-GIA, which manipulates model parameters, is not affected by batch size but worsens with larger image resolutions, worse model training states, and more complicated model architectures.</p>
+    <p style="margin-top: -40px;"> <strong>Figure 2. Experimental results on breaking group-level symmetry using <code>Qwen2.5-Math-7B</code>.</strong> 
+    In the first three pictures, we amplify (Positive-Dominant) or suppress (Negative-Dominant) the advantages of correct trajectories to compare their performance with that of GRPO and the base model.
+    In the last picture, we monitor the entropy dynamics across the three groups during training. Notably, the Negative-Dominant group exhibits a monotonic increase in entropy except at the very beginning, while the other groups show the opposite behavior.
+    </p>
+    <div class="background-box"><b>Takeaway 1:</b> At the group level, while suppressing positive advantage incentivizes the model to explore unsampled correct trajectories to improve the reasoning ability, it simultaneously introduces the risk of training collapse in the later stages of reinforcement learning . Consequently, a dynamic adjustment mechanism may be required as training progresses.</div>
 
-    <div class="background-box"><b>Takeaway 4:</b> Attackers can breach privacy on low-resolution images but fail with high-resolution ones under PEFT. Moreover, smaller pre-trained models are better at protecting privacy.</div>
 
-    <div class="image-container">
-      <img src="static/images/LoRA-all.png" alt="fig">
-      <img src="static/images/LoRA-model.png" alt="fig">
+     <div class="image-container img-2">
+      <img src="static/image/AMC2023_Pass_k_comparison2_v2.png" alt="fig">
+      <img src="static/image/AIME2025_Pass_k_comparison2_v2.png" alt="fig">
+      <img src="static/image/MATH_Pass_k_comparison2_v2.png" alt="fig">
+      <img src="static/image/correct_cnt_training.png" alt="fig">
     </div>
-    <p style="margin-top: -40px;">Figure 7. <i>left.</i> Reconstruction results of Eq. (7) evaluated on the ViT-base fine-tuned with LoRA on different datasets with different batch sizes.  <i>right.</i> Reconstruction results of Eq. (7) evaluated on different ViT architectures fine-tuned with LoRA on the CIFAR-100 dataset. These results show that attackers can breach privacy on low-resolution images but fail with high-resolution ones under PEFT. Moreover, smaller models are better at protecting privacy.</p>
-
-    <br>
-    Based on our experimental findings, we provide a three-stage defense pipeline for users when designing FL frameworks and protocols for better privacy protection:
-    <div class="background-box"><b>Takeaway 5:</b> Three-stage defense pipeline: (1) avoid the Sigmoid activation function and use more complicated network architectures during network design, (2) adopt larger batch sizes and multi-step local training in the local training protocol, and (3) implement client-side validation to check for any potential malicious modification to the model architecture and parameters upon receiving the model from the server.</div>
-
-      </div>  
+    <p style="margin-top: -40px;"> <strong>>Figure 3. Experimental results on breaking sample-level symmetry using <code>Qwen2.5-Math-7B</code>.</strong> 
+    In the first three pictures, we rescaling the advantages to shift the learning focus toward harder queries (Hard-Focused) or easier queries (Easy-Focused) to compare their performance with that of GRPO and the base model.
+    In the last picture, we record The within-batch count of correct sampling responses on the training set. Easy-Focused exhibits the most rapid initial convergence during the early stages of training, whereas Hard-Focused maintains a sustained upward trajectory in the later phases, eventually achieving superior performance.
+    </p>
+    <div class="background-box"><b>Takeaway 2:</b> At the sample level, static difficulty reweighting is insufficient, as optimal sample utility is phase-dependent. While easy samples facilitate more effective learning in the early stage, a strategic transition toward hard samples is useful as performance begins to plateau. </div>
+     </div>  
   </div>
 </div>
 </section>
 <!-- End Paper content 2 -->
+
+
+<!-- Paper content 3 -->
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div id="results-carousel">
+        <!-- 标题 -->
+        <div class="columns is-centered has-text-centered mb-6">
+          <h2 class="title is-3">The Proposed Method: Asymmetric GRAE</h2>
+        </div>
+        
+        <!-- Method 核心内容（纯文本+公式） -->
+        <div class="content has-text-justified" style="line-height: 1.8; font-size: 1.05em;">
+          <p>
+            Our prior analysis reveals that the advantage symmetry inherent in GRPO undermines model exploration and difficulty adaptation. To address these limitations, we propose the Asymmetric Group Relative Advantage Estimation (A-GRAE) framework to dynamically modulate exploration incentives and sample-difficulty focus. To implement this, a metric is required to quantify training state; accordingly, we introduce the batch-wise mean reward as a proxy indicator:
+          </p>
+
+          <!-- 公式1：batch-wise mean reward -->
+          <div class="has-text-centered my-5">
+            \[
+            \omega_s = \frac{\sum_{i=1}^{B}r_i}{B},
+            \]
+          </div>
+
+          <p>
+            where \(B\) denotes the total number of trajectories in the batch, \(\omega_s\) denotes the mean reward of the current step, where a higher value implies stronger model proficiency. Then we introduce a dynamic attention shift at the sample level, transitioning from easy to hard samples as training progresses:
+          </p>
+
+          <!-- 公式2：sample-level dynamic attention shift -->
+          <div class="has-text-centered my-5">
+            \[
+            A_i = \frac{\omega_s}{2}\cdot\frac{r_i - \text{mean}(\{r_1, r_2, ..., r_G\})}{\text{std}(\{r_1, r_2, ..., r_G\})\cdot\sqrt{p}}+\frac{1-\omega_s}{2}\cdot\frac{r_i - \text{mean}(\{r_1, r_2, ..., r_G\})}{\text{std}(\{r_1, r_2, ..., r_G\})\cdot\sqrt{1-p}},
+            \]
+          </div>
+
+          <p>
+            where \(p\) denotes the sampling success rate for a given query. Note that rescaling is omitted when \(p\in\{0,1\}\), as the standard advantage equals 0. As the model evolves with increasing sampling success rate, the weight assigned to the hard-focused component (first term) progressively increases, while the corresponding weight for the easy-focused component (second term) diminishes. This mechanism facilitates adaptive trade-offs, dynamically shifting training focus to the hard questions as the model’s proficiency improves.
+          </p>
+
+          <p>
+            At the group level, we propose an attenuation suppression strategy for correct-response advantages, which encourages adequate exploration in the early training stage while preserving stability in the later phase:
+          </p>
+
+          <!-- 公式3：group-level attenuation suppression -->
+          <div class="has-text-centered my-5">
+            \[
+            A_i^* = \begin{cases} 
+            A_i*\min(1, \frac{\omega_s}{\alpha}), & \text{if } A > 0 \\
+            A_i, & \text{if } A \le 0 
+            \end{cases}
+            \]
+          </div>
+
+          <p>
+            Here, \(\alpha \leq 1\) is a scaling parameter. Once the refined advantages are computed, they can be seamlessly incorporated into the GRPO objective function, as defined in~\cref{eq:grpo}, or other GRPO variants for policy optimization.
+          </p>
+        </div>
+      </div>  
+    </div>
+  </div>
+</section>
+<!-- End Paper content 3 -->
+
+
+<!-- Paper content 4 -->
+<section class="hero is-small">
+  <div class="container is-max-desktop">
+      <div id="results-carousel">
+
+       <div class="columns is-centered has-text-centered">
+        <h2 class="title is-3">Experimental Results</h2>
+       </div>
+
+       <p style="font-weight: bold; margin-bottom: 10px;">
+  Table 1. Pass@$k$ results on MATH, AIME 2025 and AMC23 with <code>Qwen2.5-Math-7B</code>. Bold and underlined numbers denote the best and second-best results for each $k$.
+  Our experiments cover GRPO variants (GRPO[<a href="https://arxiv.org/pdf/2402.03300" target="_blank">1</a>], DAPO[<a href="https://arxiv.org/abs/2503.14476" target="_blank">2</a>], Dr.GRPO[<a href="https://arxiv.org/abs/2503.20783" target="_blank">3</a>]) and state-of-the-art methods W-REINFORCE[<a href="https://arxiv.org/pdf/2506.01347" target="_blank">4</a>](addressing GRPO's insufficient exploration) and GRPO-LEAD[<a href="https://arxiv.org/abs/2504.09696" target="_blank">5</a>] (tackling its difficulty adaptation).
+</p>
+
+      <!-- 核心表格 -->
+      <table style="text-align: center; border-collapse: collapse; width: 100%; font-size: 0.9em; margin: 15px 0;">
+        <!-- 表头样式定义 -->
+        <style>
+          /* 表格边框和单元格样式 */
+          table th, table td {
+            border: 1px solid #ddd;
+            padding: 6px 8px;
+            vertical-align: middle;
+          }
+          /* 表头样式 */
+          table th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+          }
+          /* 最优结果（加粗） */
+          .best {
+            font-weight: bold;
+          }
+          /* 次优结果（下划线） */
+          .second {
+            text-decoration: underline;
+          }
+          /* 浅蓝色行背景（A-GRAE 行） */
+          .a-grae-row {
+            background-color: #f0f8ff; /* aliceblue 对应色值 */
+          }
+          /* 分组标题行 */
+          .group-title td {
+            font-weight: bold;
+            background-color: #f8f8f8;
+          }
+        </style>
+
+        <thead>
+          <tr>
+            <!-- 合并列：Method + Pass@k 表头 -->
+            <th rowspan="2" style="min-width: 120px;">Method</th>
+            <th colspan="9">Pass@$k$</th>
+          </tr>
+          <tr>
+            <!-- k 值列 -->
+            <th>$k$=1</th>
+            <th>$k$=2</th>
+            <th>$k$=4</th>
+            <th>$k$=8</th>
+            <th>$k$=16</th>
+            <th>$k$=32</th>
+            <th>$k$=64</th>
+            <th>$k$=128</th>
+            <th>$k$=256</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <!-- MATH 分组 -->
+          <tr class="group-title">
+            <td colspan="10">MATH</td>
+          </tr>
+          <tr>
+            <td>Base Model</td>
+            <td>63.4</td>
+            <td>74.8</td>
+            <td>83.2</td>
+            <td>88.6</td>
+            <td>91.2</td>
+            <td>93.4</td>
+            <td>94.1</td>
+            <td>95.0</td>
+            <td>96.3</td>
+          </tr>
+          <tr>
+            <td>GRPO</td>
+            <td>76.5</td>
+            <td>82.3</td>
+            <td>86.1</td>
+            <td>88.8</td>
+            <td>90.3</td>
+            <td>92.6</td>
+            <td>93.5</td>
+            <td>93.9</td>
+            <td>95.0</td>
+          </tr>
+          <tr>
+            <td>GRPO-LEAD</td>
+            <td>77.8</td>
+            <td>83.0</td>
+            <td>86.5</td>
+            <td>89.2</td>
+            <td>90.5</td>
+            <td>92.3</td>
+            <td>92.8</td>
+            <td>93.6</td>
+            <td>95.0</td>
+          </tr>
+          <tr>
+            <td>W-REINFORCE</td>
+            <td>76.6</td>
+            <td>82.8</td>
+            <td>87.1</td>
+            <td>90.2</td>
+            <td>92.4</td>
+            <td>94.1</td>
+            <td class="second">95.3</td>
+            <td class="second">96.1</td>
+            <td class="second">96.7</td>
+          </tr>
+          <tr class="a-grae-row">
+            <td>GRPO + A-GRAE</td>
+            <td class="second">78.3</td>
+            <td class="second">85.0</td>
+            <td class="second">89.2</td>
+            <td class="best">91.0</td>
+            <td class="second">92.5</td>
+            <td class="second">94.6</td>
+            <td>95.0</td>
+            <td>95.5</td>
+            <td>96.5</td>
+          </tr>
+          <tr>
+            <td>DAPO</td>
+            <td>75.0</td>
+            <td>79.8</td>
+            <td>85.0</td>
+            <td>88.4</td>
+            <td>89.8</td>
+            <td>92.0</td>
+            <td>92.8</td>
+            <td>93.4</td>
+            <td>94.3</td>
+          </tr>
+          <tr class="a-grae-row">
+            <td>DAPO + A-GRAE</td>
+            <td>76.9</td>
+            <td>82.6</td>
+            <td>86.5</td>
+            <td>89.2</td>
+            <td>90.6</td>
+            <td>92.8</td>
+            <td>93.6</td>
+            <td>94.2</td>
+            <td>95.3</td>
+          </tr>
+          <tr>
+            <td>Dr.GRPO</td>
+            <td>77.2</td>
+            <td>82.5</td>
+            <td>87.4</td>
+            <td>89.6</td>
+            <td>91.0</td>
+            <td>92.8</td>
+            <td>93.6</td>
+            <td>94.3</td>
+            <td>95.0</td>
+          </tr>
+          <tr class="a-grae-row">
+            <td>Dr.GRPO + A-GRAE</td>
+            <td class="best">78.6</td>
+            <td class="best">86.2</td>
+            <td class="best">89.8</td>
+            <td class="second">90.6</td>
+            <td class="best">92.8</td>
+            <td class="best">95.0</td>
+            <td class="best">95.4</td>
+            <td class="best">96.0</td>
+            <td class="best">96.9</td>
+          </tr>
+
+          <!-- AIME 2025 分组 -->
+          <tr class="group-title">
+            <td colspan="10">AIME 2025</td>
+          </tr>
+          <tr>
+            <td>Base Model</td>
+            <td>6.1</td>
+            <td>9.9</td>
+            <td>14.4</td>
+            <td>19.3</td>
+            <td>24.4</td>
+            <td>29.1</td>
+            <td>33.4</td>
+            <td>39.2</td>
+            <td>46.7</td>
+          </tr>
+          <tr>
+            <td>GRPO</td>
+            <td>10.3</td>
+            <td>14.3</td>
+            <td>18.7</td>
+            <td>23.1</td>
+            <td>27.5</td>
+            <td>31.8</td>
+            <td>36.1</td>
+            <td>40.8</td>
+            <td>46.7</td>
+          </tr>
+          <tr>
+            <td>GRPO-LEAD</td>
+            <td>11.0</td>
+            <td>14.8</td>
+            <td>19.2</td>
+            <td>23.4</td>
+            <td>27.8</td>
+            <td>32.0</td>
+            <td>36.5</td>
+            <td>41.4</td>
+            <td>47.3</td>
+          </tr>
+          <tr>
+            <td>W-REINFORCE</td>
+            <td>10.6</td>
+            <td>15.3</td>
+            <td>20.0</td>
+            <td>24.7</td>
+            <td>29.7</td>
+            <td>34.6</td>
+            <td>40.5</td>
+            <td>47.8</td>
+            <td>56.7</td>
+          </tr>
+          <tr class="a-grae-row">
+            <td>GRPO + A-GRAE</td>
+            <td>11.3</td>
+            <td>15.6</td>
+            <td>19.8</td>
+            <td>24.7</td>
+            <td>28.6</td>
+            <td class="second">34.1</td>
+            <td class="second">39.2</td>
+            <td>47.8</td>
+            <td class="second">56.7</td>
+          </tr>
+          <tr>
+            <td>DAPO</td>
+            <td class="second">12.0</td>
+            <td>16.1</td>
+            <td class="second">21.3</td>
+            <td class="second">25.2</td>
+            <td class="second">29.4</td>
+            <td>33.2</td>
+            <td>38.5</td>
+            <td>45.4</td>
+            <td>53.3</td>
+          </tr>
+          <tr class="a-grae-row">
+            <td>DAPO + A-GRAE</td>
+            <td class="best">13.3</td>
+            <td class="best">18.4</td>
+            <td class="best">23.0</td>
+            <td class="best">26.3</td>
+            <td class="best">30.0</td>
+            <td class="best">35.1</td>
+            <td class="best">41.1</td>
+            <td class="best">48.7</td>
+            <td class="best">60.0</td>
+          </tr>
+          <tr>
+            <td>Dr.GRPO</td>
+            <td>11.0</td>
+            <td>14.8</td>
+            <td>19.3</td>
+            <td>24.3</td>
+            <td>28.8</td>
+            <td>33.0</td>
+            <td>37.1</td>
+            <td>41.2</td>
+            <td>46.7</td>
+          </tr>
+          <tr class="a-grae-row">
+            <td>Dr.GRPO + A-GRAE</td>
+            <td>11.8</td>
+            <td class="second">16.2</td>
+            <td>19.8</td>
+            <td>25.0</td>
+            <td>29.3</td>
+            <td>34.8</td>
+            <td>37.9</td>
+            <td class="second">48.0</td>
+            <td class="second">56.7</td>
+          </tr>
+
+          <!-- AMC23 分组 -->
+          <tr class="group-title">
+            <td colspan="10">AMC23</td>
+          </tr>
+          <tr>
+            <td>Base Model</td>
+            <td>40.6</td>
+            <td>55.3</td>
+            <td>68.6</td>
+            <td>78.6</td>
+            <td>85.0</td>
+            <td>89.4</td>
+            <td>93.4</td>
+            <td class="best">97.3</td>
+            <td class="best">100.0</td>
+          </tr>
+          <tr>
+            <td>GRPO</td>
+            <td>60.2</td>
+            <td>66.7</td>
+            <td>72.1</td>
+            <td>76.4</td>
+            <td>80.6</td>
+            <td>84.8</td>
+            <td>88.3</td>
+            <td>90.8</td>
+            <td>92.5</td>
+          </tr>
+          <tr>
+            <td>GRPO-LEAD</td>
+            <td>62.3</td>
+            <td>68.0</td>
+            <td>73.3</td>
+            <td>77.8</td>
+            <td>81.5</td>
+            <td>85.0</td>
+            <td>88.2</td>
+            <td>90.3</td>
+            <td>92.3</td>
+          </tr>
+          <tr>
+            <td>W-REINFORCE</td>
+            <td>62.0</td>
+            <td>70.0</td>
+            <td>77.0</td>
+            <td>83.1</td>
+            <td>87.8</td>
+            <td>91.8</td>
+            <td>95.2</td>
+            <td>97.1</td>
+            <td class="second">97.5</td>
+          </tr>
+          <tr class="a-grae-row">
+            <td>GRPO + A-GRAE</td>
+            <td class="second">62.6</td>
+            <td>70.0</td>
+            <td>77.5</td>
+            <td>83.7</td>
+            <td>88.2</td>
+            <td>92.0</td>
+            <td class="second">95.1</td>
+            <td>96.8</td>
+            <td class="second">97.5</td>
+          </tr>
+          <tr>
+            <td>DAPO</td>
+            <td>62.0</td>
+            <td class="second">70.3</td>
+            <td>77.2</td>
+            <td>83.1</td>
+            <td>87.8</td>
+            <td>91.4</td>
+            <td>94.0</td>
+            <td>96.1</td>
+            <td class="second">97.5</td>
+          </tr>
+          <tr class="a-grae-row">
+            <td>DAPO + A-GRAE</td>
+            <td class="best">63.3</td>
+            <td class="best">72.5</td>
+            <td class="best">80.5</td>
+            <td class="best">86.7</td>
+            <td class="best">90.2</td>
+            <td class="best">92.9</td>
+            <td>95.0</td>
+            <td class="second">97.0</td>
+            <td class="best">100.0</td>
+          </tr>
+          <tr>
+            <td>Dr.GRPO</td>
+            <td>60.7</td>
+            <td>69.8</td>
+            <td>75.6</td>
+            <td>82.6</td>
+            <td>87.8</td>
+            <td>90.9</td>
+            <td>93.2</td>
+            <td>94.6</td>
+            <td>95.0</td>
+          </tr>
+          <tr class="a-grae-row">
+            <td>Dr.GRPO + A-GRAE</td>
+            <td>62.8</td>
+            <td>71.6</td>
+            <td class="second">78.2</td>
+            <td class="second">84.0</td>
+            <td class="second">89.6</td>
+            <td class="second">92.3</td>
+            <td class="best">95.2</td>
+            <td>95.9</td>
+            <td class="best">100.0</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p style="font-weight: bold; margin-bottom: 10px; font-size: 1.05em;">
+        Table 2. Performance comparison on multi-modal benchmarks with <code>Qwen2.5-VL-3B-Instruct</code>. Bold and underlined numbers indicate the best and second-best results respectively.
+      </p>
+
+      <!-- 核心表格 -->
+      <table style="text-align: center; border-collapse: collapse; width: 100%; max-width: 600px; font-size: 0.9em; margin: 15px 0;">
+        <!-- 内嵌样式定义 -->
+        <style>
+          /* 单元格基础样式 */
+          table th, table td {
+            border: 1px solid #ddd;
+            padding: 6px 8px;
+            vertical-align: middle;
+          }
+          /* 表头样式 */
+          table th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+          }
+          /* 最优结果（加粗） */
+          .best {
+            font-weight: bold;
+          }
+          /* 次优结果（下划线） */
+          .second {
+            text-decoration: underline;
+          }
+          /* A-GRAE 行浅蓝色背景（aliceblue） */
+          .a-grae-row {
+            background-color: #f0f8ff;
+          }
+          /* 任务分组行（浅灰色背景） */
+          .task-group {
+            background-color: #f9f9f9; /* 对应 gray!5 */
+            font-style: italic;
+            text-align: left;
+            font-weight: 500;
+          }
+          /* 等宽字体优化 */
+          code {
+            font-family: "Courier New", monospace;
+          }
+        </style>
+
+        <thead>
+          <tr>
+            <!-- 表头分组：ID Domain + OOD Domain -->
+            <th rowspan="2" style="min-width: 120px; text-align: left;">Method</th>
+            <th>ID Domain</th>
+            <th colspan="2">OOD Domain</th>
+          </tr>
+          <tr>
+            <th>Geo3K</th>
+            <th>MathVision</th>
+            <th>Mathverse</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <!-- Task A: General Mathematical Reasoning -->
+          <tr class="task-group">
+            <td colspan="4">Task A: General Mathematical Reasoning</td>
+          </tr>
+          <tr>
+            <td style="text-align: left;">base model</td>
+            <td>27.8</td>
+            <td>20.8</td>
+            <td>31.6</td>
+          </tr>
+          <tr>
+            <td style="text-align: left;">GRPO</td>
+            <td>43.5</td>
+            <td>23.4</td>
+            <td>35.2</td>
+          </tr>
+          <tr class="a-grae-row">
+            <td style="text-align: left;">GRPO + A-GRAE</td>
+            <td class="second">45.7</td>
+            <td>24.0</td>
+            <td>36.8</td>
+          </tr>
+          <tr>
+            <td style="text-align: left;">DAPO</td>
+            <td>44.7</td>
+            <td>23.8</td>
+            <td>35.9</td>
+          </tr>
+          <tr class="a-grae-row">
+            <td style="text-align: left;">DAPO + A-GRAE</td>
+            <td>45.9</td>
+            <td class="second">24.3</td>
+            <td class="second">37.5</td>
+          </tr>
+          <tr>
+            <td style="text-align: left;">Dr.GRPO</td>
+            <td>44.9</td>
+            <td>24.2</td>
+            <td>36.5</td>
+          </tr>
+          <tr class="a-grae-row">
+            <td style="text-align: left;">Dr.GRPO + A-GRAE</td>
+            <td class="best">46.8</td>
+            <td class="best">25.6</td>
+            <td class="best">38.4</td>
+          </tr>
+
+          <!-- 分隔线 + Task B: Medical Imaging Reasoning -->
+          <tr>
+            <td colspan="4" style="border: none; padding: 2px; background: #f2f2f2;"></td>
+          </tr>
+          <tr class="task-group">
+            <td colspan="4">Task B: Medical Imaging Reasoning</td>
+          </tr>
+          <tr>
+            <td style="text-align: left;"></td>
+            <th>MRI300</th>
+            <th>CT300</th>
+            <th>Xray300</th>
+          </tr>
+          <tr>
+            <td style="text-align: left;">base model</td>
+            <td>35.6</td>
+            <td>42.5</td>
+            <td>42.0</td>
+          </tr>
+          <tr>
+            <td style="text-align: left;">GRPO</td>
+            <td>87.2</td>
+            <td>71.7</td>
+            <td>63.2</td>
+          </tr>
+          <tr class="a-grae-row">
+            <td style="text-align: left;">GRPO + A-GRAE</td>
+            <td class="second">88.2</td>
+            <td class="second">73.1</td>
+            <td>71.3</td>
+          </tr>
+          <tr>
+            <td style="text-align: left;">DAPO</td>
+            <td>84.3</td>
+            <td>71.6</td>
+            <td>63.1</td>
+          </tr>
+          <tr class="a-grae-row">
+            <td style="text-align: left;">DAPO + A-GRAE</td>
+            <td>87.0</td>
+            <td>72.3</td>
+            <td class="second">71.6</td>
+          </tr>
+          <tr>
+            <td style="text-align: left;">Dr.GRPO</td>
+            <td>87.8</td>
+            <td>72.4</td>
+            <td>69.5</td>
+          </tr>
+          <tr class="a-grae-row">
+            <td style="text-align: left;">Dr.GRPO + A-GRAE</td>
+            <td class="best">89.0</td>
+            <td class="best">73.6</td>
+            <td class="best">72.0</td>
+          </tr>
+        </tbody>
+      </table>
+   
+  
+      </div>  
+  </div>
+</div>
+</section>
+<!-- End Paper content 4 -->
 
 
 <!-- Notes -->
@@ -665,7 +1044,7 @@
         <h2 class="title is-3">Notes</h2>
        </div>
 
-      <p style="width: 70%; margin: 0 auto;">Our code is available in this repository: <a href="https://github.com/1wrx1/GIA" target="">GIA</a>. For newly proposed attack methods, we encourage you to use our repository to compare their performance with other methods. Similarly, for newly proposed defense methods, we encourage you to use our repository to evaluate their defense capabilities. </p>
+      <p style="width: 70%; margin: 0 auto;">Our code is available in this repository: <a href="https://github.com/HKU-HealthAI/A-GRAE" target="">A-GRAE</a>. For newly proposed attack methods, we encourage you to use our repository to compare their performance with other methods. Similarly, for newly proposed defense methods, we encourage you to use our repository to evaluate their defense capabilities. </p>
   
       </div>  
   </div>
