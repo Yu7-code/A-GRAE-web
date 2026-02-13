@@ -352,13 +352,32 @@
 
 
 <!-- Paper content 2 -->
-<section class="hero is-small">
+<section class="hero is-small mt-6">
   <div class="hero-body">
     <div class="container is-max-desktop">
       <div id="results-carousel">
       <div class="columns is-centered has-text-centered">
         <h2 class="title is-3">Deconstructing the Implicit Advantage Symmetry of GRAE<br></h2>
        </div>
+
+
+   <div style="font-family: 'Times New Roman', serif; font-size: 16px; line-height: 1.6; margin: 20px 0; padding-left: 10px;">
+      <strong>Control Experiment I (Breaking Intra-Group Symmetry):</strong>
+      <p style="margin: 8px 0 10px 0; text-align: justify;">
+        This experiment examines whether the model benefits more from suppressing the contribution of correct trajectories. To achieve this, we introduce a scaling coefficient β=10 to disrupt the zero-sum equilibrium (∑Aᵢ = 0). Denoting the original positive advantage as A<sub>pos</sub>, we design two variants:
+      </p>
+      <ol style="padding-left: 30px; margin: 0 0 10px 0;">
+        <li style="margin-bottom: 5px;">
+          <i>Positive-Dominant Group:</i> We scale up positive advantages (A<sub>pos</sub>* = β · A<sub>pos</sub>).
+        </li>
+        <li style="margin-bottom: 5px;">
+          <i>Negative-Dominant Group:</i> We scale down positive advantages (A<sub>pos</sub>* = A<sub>pos</sub> / β).
+        </li>
+      </ol>
+      <p style="margin: 0; text-align: justify;">
+        The original GRPO serves as the control group, representing the symmetric equilibrium.
+      </p>
+    </div>
 
     <div class="image-container img-2">
       <img src="static/image/AMC23_Pass_k_comparisonv2.png" alt="fig">
@@ -372,6 +391,24 @@
     </p>
     <div class="background-box"><b>Takeaway 1:</b> At the group level, while suppressing positive advantage incentivizes the model to explore unsampled correct trajectories to improve the reasoning ability, it simultaneously introduces the risk of training collapse in the later stages of reinforcement learning . Consequently, a dynamic adjustment mechanism may be required as training progresses.</div>
 
+
+    <div style="font-family: 'Times New Roman', serif; font-size: 16px; line-height: 1.6; margin: 20px 0; padding-left: 10px;">
+      <strong>Control Experiment II (Breaking Sample-Level Symmetry):</strong>
+      <p style="margin: 8px 0 10px 0; text-align: justify;">
+        This experiment investigates the appropriate difficulty focus during training process. We modify the advantage magnitude based on the sampling success rate p. Let Aᵢ be the original advantage of GRPO. We define two curriculum variants:
+      </p>
+      <ol style="padding-left: 30px; margin: 0 0 10px 0;">
+        <li style="margin-bottom: 5px;">
+          <i>Hard-Focused Group:</i> We shift the learning focus toward harder queries by rescaling the advantage with the factor 1/√p (Aᵢ* = γ · Aᵢ/√p).
+        </li>
+        <li style="margin-bottom: 5px;">
+          <i>Easy-Focused Group:</i> Conversely, we shift the focus to simple queries by scaling with the factor 1/√(1-p) (Aᵢ* = γ · Aᵢ/√(1-p)).
+        </li>
+      </ol>
+      <p style="margin: 0; text-align: justify;">
+        Here, γ=0.5 is a normalization constant to ensure that the theoretical maximum value remains consistent with the control group (standard GRPO). Note that no extra rescaling is conducted when the success rate is 0 or 1, as the GRPO advantage is zero in these cases.
+      </p>
+    </div>
 
      <div class="image-container img-2">
       <img src="static/image/AMC2023_Pass_k_comparison2_v2.png" alt="fig">
@@ -864,7 +901,7 @@
         </tbody>
       </table>
 
-      <p style="font-weight: bold; margin-bottom: 10px; font-size: 1.05em;">
+      <p style="font-weight: bold; margin-bottom: 15px; font-size: 1.05em; text-align: center; margin-top: 20px;">
         Table 2. Performance comparison on multi-modal benchmarks with Qwen2.5-VL-3B-Instruct.
       </p>
 
